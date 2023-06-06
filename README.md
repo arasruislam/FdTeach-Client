@@ -11,3 +11,8 @@
 ### Image Collect
 
 ### uses packages
+
+### Framework || Library
+
+* [TailwindCss](https://tailwindcss.com/)
+* [DaisyUi](https://daisyui.com/)
