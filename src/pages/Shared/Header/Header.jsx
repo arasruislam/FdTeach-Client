@@ -7,7 +7,7 @@ import { Link, NavLink } from "react-router-dom";
 
 const Header = () => {
   return (
-    <header className="fixed w-full z-50 shadow">
+    <header className="fixed w-full z-50 shadow bg-white">
       {/* Marque section */}
       <section></section>
 
