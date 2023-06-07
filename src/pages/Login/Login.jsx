@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import login from "../../assets/login.jpg";
 import SocialLogin from "../Shared/SocialLogin/SocialLogin";
 
@@ -40,8 +41,15 @@ const Login = () => {
                 className="btn bg-[#FF4D4D] text-white text-lg hover:bg-red-500"
               />
             </div>
+
+            {/* Redirect register page */}
+            <div>
+              <small>
+                Do not have an <Link to="/signup" className="underline font-bold">signup now</Link>
+              </small>
+            </div>
           </div>
-          <SocialLogin />
+          <SocialLogin title={"Login With"} />
         </div>
         <div>
           <img src={login} alt="login image" />

@@ -46,10 +46,24 @@ const Header = () => {
                   className="dropdown-content menu mt-2 p-2 shadow bg-base-100 rounded-box w-52"
                 >
                   <li>
-                    <NavLink to="/login">login</NavLink>
+                    <NavLink
+                      to="/login"
+                      className={({ isActive }) =>
+                        isActive ? "active" : "default"
+                      }
+                    >
+                      login
+                    </NavLink>
                   </li>
                   <li>
-                    <NavLink to="/register">Register</NavLink>
+                    <NavLink
+                      to="/signup"
+                      className={({ isActive }) =>
+                        isActive ? "active" : "default"
+                      }
+                    >
+                      Sign Up
+                    </NavLink>
                   </li>
                 </ul>
               </div>
