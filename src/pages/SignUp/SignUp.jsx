@@ -90,10 +90,32 @@ const SignUp = () => {
                 type="password"
                 placeholder="enter your password"
                 className="input input-bordered"
-                {...register("password", { required: true })}
+                {...register("password", {
+                  required: true,
+                  minLength: 6,
+                  maxLength: 16,
+                  pattern:
+                    /(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/,
+                })}
               />
               {errors.password?.type === "required" && (
                 <p className="text-red-500">password is required</p>
+              )}
+              {errors.password?.type === "minLength" && (
+                <p className="text-red-500">
+                  minimum six length password allowed
+                </p>
+              )}
+              {errors.password?.type === "maxLength" && (
+                <p className="text-red-500">
+                  maximum 16 length password allowed
+                </p>
+              )}
+              {errors.password?.type === "pattern" && (
+                <p className="text-red-500">
+                  At least one upper case, one lower case English letter,one
+                  digit, one special character needed.
+                </p>
               )}
             </div>
             {/* Confirm Password */}
@@ -105,9 +127,9 @@ const SignUp = () => {
                 type="password"
                 placeholder="confirm password"
                 className="input input-bordered"
-                {...register("password", { required: true })}
+                {...register("confirmPassword", { required: true })}
               />
-              {errors.password?.type === "required" && (
+              {errors.confirmPassword?.type === "required" && (
                 <p className="text-red-500">password is required</p>
               )}
             </div>
