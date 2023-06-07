@@ -32,7 +32,7 @@ const SignUp = () => {
 
   return (
     <div className="my-8">
-      <div className="grid grid-cols-2 place-items-center bg-white shadow-lg rounded-lg p-8 gap-8 border-2 border-blue-50">
+      <div className="grid grid-cols-1 lg:grid-cols-2 place-items-center bg-white shadow-lg rounded-lg py-4 lg:p-8 gap-8 border-2 border-blue-50">
         <div className="card rounded-none w-full bg-base-100">
           <h1 className="text-center text-4xl font-bold">SignUp Now</h1>
           <form onSubmit={handleSubmit(onSubmit)} className="card-body">

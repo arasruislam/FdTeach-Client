@@ -4,8 +4,23 @@ import avatar from "../../../assets/avatar.png";
 import { FaBars } from "react-icons/fa";
 import NavItem from "../../../components/NavItems";
 import { Link, NavLink } from "react-router-dom";
+import useAuth from "../../../hooks/useAuth";
+import { toast } from "react-hot-toast";
 
 const Header = () => {
+  const { user, signOutUser } = useAuth();
+
+  // Sign Out Handler
+  const signOutHandler = () => {
+    signOutUser()
+      .then(() => {
+        toast.error("Log Out");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <header className="fixed w-full z-50 shadow bg-white">
       {/* Marque section */}
@@ -34,37 +49,79 @@ const Header = () => {
                   tabIndex={0}
                 >
                   <FaBars />
-                  <div className="avatar">
-                    <div className="w-8 rounded-lg">
-                      <img src={avatar} alt="" />
-                    </div>
-                  </div>
+                  {user ? (
+                    <>
+                      <div className="avatar" title={user?.displayName}>
+                        <div className="w-8 rounded-full">
+                          <img src={user?.photoURL} alt="userImage" />
+                        </div>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <div className="avatar">
+                        <div className="w-8 rounded-lg">
+                          <img src={avatar} alt="userImage" />
+                        </div>
+                      </div>
+                    </>
+                  )}
                 </div>
 
                 <ul
                   tabIndex={0}
                   className="dropdown-content menu mt-2 p-2 shadow bg-base-100 rounded-box w-52"
                 >
-                  <li>
-                    <NavLink
-                      to="/login"
-                      className={({ isActive }) =>
-                        isActive ? "active" : "default"
-                      }
-                    >
-                      login
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink
-                      to="/signup"
-                      className={({ isActive }) =>
-                        isActive ? "active" : "default"
-                      }
-                    >
-                      Sign Up
-                    </NavLink>
-                  </li>
+                  {user ? (
+                    <>
+                      <li>
+                        <NavLink
+                          to="/"
+                          className={({ isActive }) =>
+                            isActive ? "active" : "default"
+                          }
+                        >
+                          Home
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink
+                          to="/profile"
+                          className={({ isActive }) =>
+                            isActive ? "active" : "default"
+                          }
+                        >
+                          profile
+                        </NavLink>
+                      </li>
+                      <li>
+                        <button onClick={signOutHandler}>log out</button>
+                      </li>
+                    </>
+                  ) : (
+                    <>
+                      <li>
+                        <NavLink
+                          to="/login"
+                          className={({ isActive }) =>
+                            isActive ? "active" : "default"
+                          }
+                        >
+                          login
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink
+                          to="/signup"
+                          className={({ isActive }) =>
+                            isActive ? "active" : "default"
+                          }
+                        >
+                          Sign Up
+                        </NavLink>
+                      </li>
+                    </>
+                  )}
                 </ul>
               </div>
             </div>
