@@ -87,7 +87,6 @@ const SignUp = () => {
               />
             </div>
             {/* Gender */}
-            {/* Submit Button */}
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Gender</span>
