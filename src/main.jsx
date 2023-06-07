@@ -9,7 +9,7 @@ import { HelmetProvider } from "react-helmet-async";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <AuthProvider>
     <HelmetProvider>
-      <div className="font-Poppins">
+      <div className="font-Poppins layout-size">
         <RouterProvider router={router} />
         <Toaster />
       </div>
