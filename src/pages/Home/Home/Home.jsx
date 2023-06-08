@@ -1,5 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import Slider from "../Slider/Slider";
+import SectionTitle from "../../../components/SectionTitle";
+import PopularClasses from "../PopularClasses/PopularClasses";
 
 const Home = () => {
   return (
@@ -12,6 +14,12 @@ const Home = () => {
       {/* Slider */}
       <section className="mt-4">
         <Slider />
+      </section>
+
+      {/* Popular Classes */}
+      <section className="mt-12">
+        <SectionTitle title="Popular Classes" />
+        <PopularClasses />
       </section>
     </div>
   );

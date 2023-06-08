@@ -1,7 +1,7 @@
 [
   {
     "number_of_students": 20,
-    "image": "path/to/image1.jpg",
+    "image": "https://i.ibb.co/WtM2m5Y/classes-1.jpg",
     "name": "Introduction to Fashion Illustration",
     "instructor_name": "Anna Johnson",
     "available_seats": 10,
@@ -9,7 +9,7 @@
   },
   {
     "number_of_students": 15,
-    "image": "path/to/image2.jpg",
+    "image": "https://i.ibb.co/zx6kmYc/classes-6.jpg",
     "name": "Fashion Styling and Personal Branding",
     "instructor_name": "David Lee",
     "available_seats": 5,
@@ -17,7 +17,7 @@
   },
   {
     "number_of_students": 12,
-    "image": "path/to/image3.jpg",
+    "image": "https://i.ibb.co/h2PZTf5/classes-5.jpg",
     "name": "Textile Design Techniques",
     "instructor_name": "Emily Thompson",
     "available_seats": 8,
@@ -25,7 +25,7 @@
   },
   {
     "number_of_students": 18,
-    "image": "path/to/image4.jpg",
+    "image": "https://i.ibb.co/6B0SsT3/classes-4.jpg",
     "name": "Fashion Marketing Strategies",
     "instructor_name": "Michael Rodriguez",
     "available_seats": 2,
@@ -33,7 +33,7 @@
   },
   {
     "number_of_students": 25,
-    "image": "path/to/image5.jpg",
+    "image": "https://i.ibb.co/XCpMmZt/classes-3.jpg",
     "name": "Pattern Making Fundamentals",
     "instructor_name": "Sophia Chen",
     "available_seats": 15,
@@ -41,7 +41,7 @@
   },
   {
     "number_of_students": 10,
-    "image": "path/to/image6.jpg",
+    "image": "https://i.ibb.co/WpBQh8Z/classes-2.jpg",
     "name": "Fashion Photography Workshop",
     "instructor_name": "Daniel Moore",
     "available_seats": 0,
