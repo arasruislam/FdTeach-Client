@@ -3,24 +3,13 @@ import logo from "../../../assets/logo.png";
 import avatar from "../../../assets/avatar.png";
 import { FaBars } from "react-icons/fa";
 import NavItem from "../../../components/NavItems";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
+// import { toast } from "react-hot-toast";
+import Avatar from "../../../components/Avatar";
 import useAuth from "../../../hooks/useAuth";
-import { toast } from "react-hot-toast";
 
 const Header = () => {
-  const { user, signOutUser } = useAuth();
-
-  // Sign Out Handler
-  const signOutHandler = () => {
-    signOutUser()
-      .then(() => {
-        toast.error("Log Out");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
+  const { user } = useAuth();
   return (
     <header className="fixed w-full z-50 shadow bg-white">
       {/* Marque section */}
@@ -72,18 +61,45 @@ const Header = () => {
                   tabIndex={0}
                   className="dropdown-content menu mt-2 p-2 shadow bg-base-100 rounded-box w-52"
                 >
+                  <Avatar />
+                </ul>
+              </div>
+            </div>
+
+            {/* Mobile Device */}
+            <div className="navbar-end lg:hidden">
+              <div className="dropdown dropdown-bottom dropdown-end">
+                <div
+                  className="flex gap-2 items-center rounded-full py-1 px-2 shadow cursor-pointer"
+                  tabIndex={0}
+                >
+                  <FaBars />
                   {user ? (
                     <>
-                      <li>
-                        <NavLink
-                          to="/"
-                          className={({ isActive }) =>
-                            isActive ? "active" : "default"
-                          }
-                        >
-                          Home
-                        </NavLink>
-                      </li>
+                      <div className="avatar" title={user?.displayName}>
+                        <div className="w-8 rounded-full">
+                          <img src={user?.photoURL} alt="userImage" />
+                        </div>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <div className="avatar">
+                        <div className="w-8 rounded-lg">
+                          <img src={avatar} alt="userImage" />
+                        </div>
+                      </div>
+                    </>
+                  )}
+                </div>
+
+                <ul
+                  tabIndex={0}
+                  className="dropdown-content menu mt-2 p-2 shadow bg-base-100 rounded-box w-52"
+                >
+                  {NavItem}
+                  {/* {user ? (
+                    <>
                       <li>
                         <NavLink
                           to="/profile"
@@ -95,7 +111,9 @@ const Header = () => {
                         </NavLink>
                       </li>
                       <li>
-                        <button onClick={signOutHandler}>log out</button>
+                        <button className="text-lg" onClick={signOutHandler}>
+                          log out
+                        </button>
                       </li>
                     </>
                   ) : (
@@ -121,31 +139,8 @@ const Header = () => {
                         </NavLink>
                       </li>
                     </>
-                  )}
-                </ul>
-              </div>
-            </div>
-
-            {/* Mobile Device */}
-            <div className="navbar-end lg:hidden">
-              <div className="dropdown dropdown-bottom dropdown-end">
-                <div
-                  className="flex gap-2 items-center rounded-full py-1 px-2 shadow cursor-pointer"
-                  tabIndex={0}
-                >
-                  <FaBars />
-                  <div className="avatar">
-                    <div className="w-8 rounded-lg">
-                      <img src={avatar} alt="" />
-                    </div>
-                  </div>
-                </div>
-
-                <ul
-                  tabIndex={0}
-                  className="dropdown-content menu mt-2 p-2 shadow bg-base-100 rounded-box w-52"
-                >
-                  {NavItem}
+                  )} */}
+                  <Avatar />
                 </ul>
               </div>
             </div>
