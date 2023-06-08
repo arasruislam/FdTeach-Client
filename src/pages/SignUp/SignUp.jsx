@@ -4,9 +4,11 @@ import SocialLogin from "../Shared/SocialLogin/SocialLogin";
 import { useForm } from "react-hook-form";
 import useAuth from "./../../hooks/useAuth";
 import { toast } from "react-hot-toast";
+import { useState } from "react";
 
 const SignUp = () => {
   const { registerNewUser, updateUserInfo } = useAuth();
+  const [error, setError] = useState();
   const navigate = useNavigate();
 
   const {
@@ -16,6 +18,12 @@ const SignUp = () => {
   } = useForm();
 
   const onSubmit = (data) => {
+
+    if (data.password !== data.confirmPassword) {
+      setError("password Does not match");
+      toast.error("password Does not match");
+      return;
+    }
     registerNewUser(data.email, data.password)
       .then((result) => {
         const newUser = result.user;
@@ -30,7 +38,7 @@ const SignUp = () => {
       })
       .catch((error) => console.log(error));
   };
-
+  console.log(error);
   return (
     <div className="my-8">
       <div className="grid grid-cols-1 lg:grid-cols-2 place-items-center bg-white shadow-lg rounded-lg py-4 lg:p-8 gap-8 border-2 border-blue-50">
@@ -131,8 +139,9 @@ const SignUp = () => {
                 {...register("confirmPassword", { required: true })}
               />
               {errors.confirmPassword?.type === "required" && (
-                <p className="text-red-500">password does not match</p>
+                <p className="text-red-500">Confirmed your password</p>
               )}
+              <p className="text-red-500">{error}</p>
             </div>
             {/* Phone Number */}
             <div className="form-control">
