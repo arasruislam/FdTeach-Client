@@ -25,6 +25,8 @@ const SocialLogin = ({ title }) => {
       })
       .catch((error) => console.log(error));
   };
+
+  // TODO: facebook login handler do it later.
   // Facebook sing in handler
   const facebookSignInHandler = () => {
     signInWithFacebook()

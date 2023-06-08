@@ -16,6 +16,7 @@ const SignUp = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
@@ -40,8 +41,31 @@ const SignUp = () => {
         // update User
         updateUserInfo(data.name, data.photoURL)
           .then(() => {
-            navigate("/", { replace: true });
-            toast.success("user create successful");
+            const userInformation = {
+              name: data.name,
+              email: data.email,
+              photoURL: data.photoURL,
+              password: data.password,
+              phoneNumber: data.phone,
+              address: data.address,
+              gender: data.gender,
+            };
+            fetch("http://localhost:5000/users", {
+              method: "POST",
+              headers: {
+                "content-type": "application/json",
+              },
+              body: JSON.stringify(userInformation),
+            })
+              .then((res) => res.json())
+              .then((data) => {
+                console.log(data);
+                if (data.insertedId) {
+                  reset();
+                  toast.success("User signUp Successful 🎁🎁");
+                  navigate("/", { replace: true });
+                }
+              });
           })
           .catch((error) => console.log(error));
       })
