@@ -8,6 +8,7 @@ import { toast } from "react-hot-toast";
 const SignUp = () => {
   const { registerNewUser, updateUserInfo } = useAuth();
   const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -130,7 +131,7 @@ const SignUp = () => {
                 {...register("confirmPassword", { required: true })}
               />
               {errors.confirmPassword?.type === "required" && (
-                <p className="text-red-500">password is required</p>
+                <p className="text-red-500">password does not match</p>
               )}
             </div>
             {/* Phone Number */}
