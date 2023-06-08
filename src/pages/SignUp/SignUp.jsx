@@ -6,6 +6,7 @@ import useAuth from "./../../hooks/useAuth";
 import { toast } from "react-hot-toast";
 import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { Helmet } from "react-helmet-async";
 
 const SignUp = () => {
   const { registerNewUser, updateUserInfo } = useAuth();
@@ -73,6 +74,10 @@ const SignUp = () => {
   };
 
   return (
+    <>
+      <Helmet>
+        <title>StartUp Template | signUp</title>
+      </Helmet>
     <div className="my-8">
       <div className="grid grid-cols-1 lg:grid-cols-2 place-items-center bg-white shadow-lg rounded-lg py-4 lg:p-8 gap-8 border-2 border-blue-50">
         <div className="card rounded-none w-full bg-base-100">
@@ -261,6 +266,7 @@ const SignUp = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

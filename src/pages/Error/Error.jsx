@@ -1,10 +1,16 @@
 import { Link, useRouteError } from "react-router-dom";
 import Lottie from "lottie-react";
 import errorLottie from "../../../public/error.json";
+import { Helmet } from "react-helmet-async";
 
 const Error = () => {
   const { error, status } = useRouteError();
   return (
+    <>
+      <Helmet>
+        <title>StartUp Template | Error</title>
+      </Helmet>
+
     <section className="flex items-center justify-center h-screen p-8 text-gray-800">
       <div className="flex flex-col lg:flex-row items-center justify-center">
         {/* Large device */}
@@ -43,6 +49,7 @@ const Error = () => {
         </div>
       </div>
     </section>
+    </>
   );
 };
 
