@@ -19,7 +19,9 @@ const Home = () => {
       {/* Popular Classes */}
       <section className="mt-12">
         <SectionTitle title="Popular Classes" />
-        <PopularClasses />
+        <div className="pt-4">
+          <PopularClasses />
+        </div>
       </section>
     </div>
   );

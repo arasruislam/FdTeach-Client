@@ -4,6 +4,7 @@
     "image": "https://i.ibb.co/WtM2m5Y/classes-1.jpg",
     "name": "Introduction to Fashion Illustration",
     "instructor_name": "Anna Johnson",
+    "instructor_photo": "https://i.ibb.co/Yd44JhX/instructor-6.jpg",
     "available_seats": 10,
     "price": 99.99
   },
@@ -12,6 +13,7 @@
     "image": "https://i.ibb.co/zx6kmYc/classes-6.jpg",
     "name": "Fashion Styling and Personal Branding",
     "instructor_name": "David Lee",
+    "instructor_photo": "https://i.ibb.co/z7P3DC0/instructor-5.jpg",
     "available_seats": 5,
     "price": 149.99
   },
@@ -20,6 +22,7 @@
     "image": "https://i.ibb.co/h2PZTf5/classes-5.jpg",
     "name": "Textile Design Techniques",
     "instructor_name": "Emily Thompson",
+    "instructor_photo": "https://i.ibb.co/XWkT1S0/instructor-4.jpg",
     "available_seats": 8,
     "price": 79.99
   },
@@ -28,6 +31,7 @@
     "image": "https://i.ibb.co/6B0SsT3/classes-4.jpg",
     "name": "Fashion Marketing Strategies",
     "instructor_name": "Michael Rodriguez",
+    "instructor_photo": "https://i.ibb.co/xhwcH93/instructor-3.jpg",
     "available_seats": 2,
     "price": 199.99
   },
@@ -36,6 +40,7 @@
     "image": "https://i.ibb.co/XCpMmZt/classes-3.jpg",
     "name": "Pattern Making Fundamentals",
     "instructor_name": "Sophia Chen",
+    "instructor_photo": "https://i.ibb.co/hKYCV9x/instructor-2.jpg",
     "available_seats": 15,
     "price": 129.99
   },
@@ -44,6 +49,7 @@
     "image": "https://i.ibb.co/WpBQh8Z/classes-2.jpg",
     "name": "Fashion Photography Workshop",
     "instructor_name": "Daniel Moore",
+    "instructor_photo": "https://i.ibb.co/F3bzvM1/instructor-1.jpg",
     "available_seats": 0,
     "price": 179.99
   }
