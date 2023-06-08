@@ -5,9 +5,11 @@ import { useForm } from "react-hook-form";
 import useAuth from "./../../hooks/useAuth";
 import { toast } from "react-hot-toast";
 import { useState } from "react";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const SignUp = () => {
   const { registerNewUser, updateUserInfo } = useAuth();
+  const [hidePassword, setHidePassword] = useState("password");
   const [error, setError] = useState();
   const navigate = useNavigate();
 
@@ -17,8 +19,15 @@ const SignUp = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
+  // Handle hide show password
+  const handleShowPassword = () => {
+    setHidePassword("text");
+  };
+  const handleHidePassword = () => {
+    setHidePassword("password");
+  };
 
+  const onSubmit = (data) => {
     if (data.password !== data.confirmPassword) {
       setError("password Does not match");
       toast.error("password Does not match");
@@ -38,7 +47,7 @@ const SignUp = () => {
       })
       .catch((error) => console.log(error));
   };
-  console.log(error);
+
   return (
     <div className="my-8">
       <div className="grid grid-cols-1 lg:grid-cols-2 place-items-center bg-white shadow-lg rounded-lg py-4 lg:p-8 gap-8 border-2 border-blue-50">
@@ -91,12 +100,12 @@ const SignUp = () => {
               )}
             </div>
             {/* Password */}
-            <div className="form-control">
+            <div className="form-control relative">
               <label className="label">
                 <span className="label-text">Password</span>
               </label>
               <input
-                type="password"
+                type={hidePassword}
                 placeholder="enter your password"
                 className="input input-bordered"
                 {...register("password", {
@@ -126,14 +135,34 @@ const SignUp = () => {
                   digit, one special character needed.
                 </p>
               )}
+              {/* Show or hide password */}
+              {hidePassword === "text" ? (
+                <>
+                  <button
+                    onClick={handleHidePassword}
+                    className=" absolute right-2 bottom-3 cursor-pointer"
+                  >
+                    <FaEyeSlash className="h-6 w-6" />
+                  </button>
+                </>
+              ) : (
+                <>
+                  <button
+                    onClick={handleShowPassword}
+                    className=" absolute right-2 bottom-3 cursor-pointer"
+                  >
+                    <FaEye className="h-6 w-6" />
+                  </button>
+                </>
+              )}
             </div>
             {/* Confirm Password */}
-            <div className="form-control">
+            <div className="form-control relative">
               <label className="label">
                 <span className="label-text">Confirm Password</span>
               </label>
               <input
-                type="password"
+                type={hidePassword}
                 placeholder="confirm password"
                 className="input input-bordered"
                 {...register("confirmPassword", { required: true })}
