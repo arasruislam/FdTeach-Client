@@ -3,8 +3,16 @@ import Slider from "../Slider/Slider";
 import SectionTitle from "../../../components/SectionTitle";
 import PopularClasses from "../PopularClasses/PopularClasses";
 import PopularInstructors from "../PopularInstructors/PopularInstructors";
+import useAuth from "../../../hooks/useAuth";
+import Loading from "../../Loading/Loading";
 
 const Home = () => {
+  // TODO: uncomment this.
+  const { loading } = useAuth();
+  if (loading) {
+    return <Loading/>
+  }
+
   return (
     <div>
       {/* Head Title */}
