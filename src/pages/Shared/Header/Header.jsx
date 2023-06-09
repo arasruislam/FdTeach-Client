@@ -78,7 +78,11 @@ const Header = () => {
                     <>
                       <div className="avatar" title={user?.displayName}>
                         <div className="w-8 rounded-full">
-                          <img src={user?.photoURL} alt="userImage" />
+                          <img
+                            src={user?.photoURL}
+                            referrerPolicy="no-referrer"
+                            alt="userImage"
+                          />
                         </div>
                       </div>
                     </>

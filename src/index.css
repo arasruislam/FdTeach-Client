@@ -12,3 +12,4 @@
 .default {
   @apply bg-transparent hover:bg-transparent text-gray-800 hover:text-[#4FBF9F] transition duration-300 text-lg;
 }
+

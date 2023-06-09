@@ -38,7 +38,7 @@ const SingleClass = ({ singleClass }) => {
             see more
           </button>
         </div>
-        <button className="absolute top-0 right-0 mt-4 mr-4 bg-white text-xl text-[#4FBF9F] font-bold p-2 rounded-xl">
+        <button className="absolute top-0 right-0 mt-2 mr-4 bg-white text-xl text-[#4FBF9F] font-bold p-2 rounded-xl border-b-2 shadow">
           ${singleClass?.price}
         </button>
       </div>
