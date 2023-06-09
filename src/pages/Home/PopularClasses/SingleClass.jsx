@@ -1,9 +1,9 @@
 import LazyLoad from "react-lazyload";
-import { FaChalkboardTeacher, FaUsers } from "react-icons/fa";
+import { FaUsers } from "react-icons/fa";
 
 const SingleClass = ({ singleClass }) => {
   return (
-    <div className="card card-compact w-96 rounded-none bg-base-100 shadow-md relative">
+    <div className="card card-compact max-w-96 rounded-none bg-base-100 shadow-md relative hover:bg-emerald-50 hover:scale-105 transition-all duration-300">
       <figure>
         <LazyLoad>
           <img
@@ -13,8 +13,8 @@ const SingleClass = ({ singleClass }) => {
           />
         </LazyLoad>
       </figure>
-      <div className="card-body hover:bg-emerald-50 transition-colors duration-300">
-        <p className="flex items-center gap-2">
+      <div className="card-body ">
+        <div className="flex items-center gap-2">
           <div className="avatar">
             <div className="w-12 mask mask-hexagon">
               <img src={singleClass?.instructor_photo} />
@@ -26,7 +26,7 @@ const SingleClass = ({ singleClass }) => {
               <small>Instructor</small>
             </p>
           </div>
-        </p>
+        </div>
         <h2 className="card-title mt-4">{singleClass?.name}</h2>
         <p className="flex items-center">
           <FaUsers className="h-6 w-6 mr-2 text-red-500" />{" "}
