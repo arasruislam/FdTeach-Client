@@ -16,7 +16,10 @@ const Class = ({ singleClass }) => {
           <div className="avatar">
             <div className="w-12 mask mask-hexagon">
               <LazyLoad>
-                <img src={singleClass?.instructor_photo} />
+                <img
+                  src={singleClass?.instructor_photo}
+                  alt="instructor photo"
+                />
               </LazyLoad>
             </div>
           </div>

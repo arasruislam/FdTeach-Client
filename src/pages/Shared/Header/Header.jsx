@@ -2,11 +2,12 @@ import Container from "../../../components/Container";
 import logo from "../../../assets/logo.png";
 import avatar from "../../../assets/avatar.png";
 import { FaBars } from "react-icons/fa";
-import NavItem from "../../../components/NavItems";
 import { Link } from "react-router-dom";
 // import { toast } from "react-hot-toast";
 import Avatar from "../../../components/Avatar";
 import useAuth from "../../../hooks/useAuth";
+import LazyLoad from "react-lazyload";
+import NavItems from "../../../components/NavItems";
 
 const Header = () => {
   const { user } = useAuth();
@@ -19,15 +20,21 @@ const Header = () => {
       <section>
         <Container>
           <div className="navbar p-0 py-2">
+            {/* Logo */}
             <div className="navbar-start">
               <Link to="/">
                 <div className="normal-case text-xl p-0">
-                  <img src={logo} alt="logo" />
+                  <LazyLoad>
+                    <img src={logo} alt="logo" />
+                  </LazyLoad>
                 </div>
               </Link>
             </div>
+            {/* nav Items */}
             <div className="navbar-center hidden lg:flex">
-              <ul className="menu menu-horizontal px-1">{NavItem}</ul>
+              <ul className="menu menu-horizontal px-1">
+                <NavItems />
+              </ul>
             </div>
 
             {/* Avatar */}
@@ -56,7 +63,7 @@ const Header = () => {
                     </>
                   )}
                 </div>
-
+                {/* avatar dropdown */}
                 <ul
                   tabIndex={0}
                   className="dropdown-content menu mt-2 p-2 shadow bg-base-100 rounded-box w-52"
@@ -69,6 +76,7 @@ const Header = () => {
             {/* Mobile Device */}
             <div className="navbar-end lg:hidden">
               <div className="dropdown dropdown-bottom dropdown-end">
+                {/* profile photo */}
                 <div
                   className="flex gap-2 items-center rounded-full py-1 px-2 shadow cursor-pointer"
                   tabIndex={0}
@@ -96,54 +104,12 @@ const Header = () => {
                     </>
                   )}
                 </div>
-
+                {/* avatar navItems */}
                 <ul
                   tabIndex={0}
                   className="dropdown-content menu mt-2 p-2 shadow bg-base-100 rounded-box w-52"
                 >
-                  {NavItem}
-                  {/* {user ? (
-                    <>
-                      <li>
-                        <NavLink
-                          to="/profile"
-                          className={({ isActive }) =>
-                            isActive ? "active" : "default"
-                          }
-                        >
-                          profile
-                        </NavLink>
-                      </li>
-                      <li>
-                        <button className="text-lg" onClick={signOutHandler}>
-                          log out
-                        </button>
-                      </li>
-                    </>
-                  ) : (
-                    <>
-                      <li>
-                        <NavLink
-                          to="/login"
-                          className={({ isActive }) =>
-                            isActive ? "active" : "default"
-                          }
-                        >
-                          login
-                        </NavLink>
-                      </li>
-                      <li>
-                        <NavLink
-                          to="/signup"
-                          className={({ isActive }) =>
-                            isActive ? "active" : "default"
-                          }
-                        >
-                          Sign Up
-                        </NavLink>
-                      </li>
-                    </>
-                  )} */}
+                  <NavItems />
                   <Avatar />
                 </ul>
               </div>
