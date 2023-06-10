@@ -1,9 +1,16 @@
+import { Helmet } from "react-helmet-async";
 
 const SelectedClasses = () => {
     return (
-        <div>
-            hello world
-        </div>
+      <>
+        {/* Head Title */}
+        <Helmet>
+          <title>Dashboard -- My Selected Classes</title>
+            </Helmet>
+            <section>
+                <h1>Hello world</h1>
+            </section>
+      </>
     );
 };
 
