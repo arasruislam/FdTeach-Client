@@ -11,6 +11,7 @@ import NavItems from "../../../components/NavItems";
 
 const Header = () => {
   const { user } = useAuth();
+
   return (
     <header className="fixed w-full z-50 shadow bg-white">
       {/* Marque section */}
@@ -44,17 +45,21 @@ const Header = () => {
                   className="flex gap-2 items-center rounded-full py-1 px-2 shadow cursor-pointer"
                   tabIndex={0}
                 >
-                  <FaBars />
                   {user ? (
                     <>
-                      <div className="avatar" title={user?.displayName}>
+                      <div
+                        className="avatar flex items-center gap-1"
+                        title={user?.displayName}
+                      >
                         <div className="w-8 rounded-full">
                           <img src={user?.photoURL} alt="userImage" />
                         </div>
+                        <h5>{user?.displayName.split(" ")[0]}</h5>
                       </div>
                     </>
                   ) : (
                     <>
+                      <FaBars />
                       <div className="avatar">
                         <div className="w-8 rounded-lg">
                           <img src={avatar} alt="userImage" />
@@ -81,10 +86,13 @@ const Header = () => {
                   className="flex gap-2 items-center rounded-full py-1 px-2 shadow cursor-pointer"
                   tabIndex={0}
                 >
-                  <FaBars />
+                  <FaBars className="md:hidden" />
                   {user ? (
                     <>
-                      <div className="avatar" title={user?.displayName}>
+                      <div
+                        className="avatar flex items-center gap-1"
+                        title={user?.displayName}
+                      >
                         <div className="w-8 rounded-full">
                           <img
                             src={user?.photoURL}
@@ -92,10 +100,14 @@ const Header = () => {
                             alt="userImage"
                           />
                         </div>
+                        <h5 className="hidden md:block">
+                          {user?.displayName.split(" ")[0]}
+                        </h5>
                       </div>
                     </>
                   ) : (
                     <>
+                      <FaBars className="hidden md:block"/>
                       <div className="avatar">
                         <div className="w-8 rounded-lg">
                           <img src={avatar} alt="userImage" />
