@@ -1,17 +1,19 @@
 import { FaFacebook, FaGithub, FaGoogle } from "react-icons/fa";
 import useAuth from "../../../hooks/useAuth";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 
 const SocialLogin = ({ title }) => {
   const { signInWithGoogle, signInWithGithub, signInWithFacebook } = useAuth();
+  const location = useLocation();
   const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/";
 
   // Google sing in handler
   const googleSignInHandler = () => {
     signInWithGoogle()
       .then(() => {
-        navigate("/", { replace: true });
+        navigate("from", { replace: true });
         toast.success("Login Successful");
       })
       .catch((error) => console.log(error));
@@ -20,7 +22,7 @@ const SocialLogin = ({ title }) => {
   const githubSignInHandler = () => {
     signInWithGithub()
       .then(() => {
-        navigate("/", { replace: true });
+        navigate("from", { replace: true });
         toast.success("Login Successful");
       })
       .catch((error) => console.log(error));
@@ -31,7 +33,7 @@ const SocialLogin = ({ title }) => {
   const facebookSignInHandler = () => {
     signInWithFacebook()
       .then(() => {
-        navigate("/", { replace: true });
+        navigate("from", { replace: true });
         toast.success("Login Successful");
       })
       .catch((error) => console.log(error));
