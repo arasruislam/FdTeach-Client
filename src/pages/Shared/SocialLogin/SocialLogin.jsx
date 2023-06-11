@@ -13,7 +13,7 @@ const SocialLogin = ({ title }) => {
   const googleSignInHandler = () => {
     signInWithGoogle()
       .then(() => {
-        navigate("from", { replace: true });
+        navigate(from, { replace: true });
         toast.success("Login Successful");
       })
       .catch((error) => console.log(error));
@@ -22,7 +22,7 @@ const SocialLogin = ({ title }) => {
   const githubSignInHandler = () => {
     signInWithGithub()
       .then(() => {
-        navigate("from", { replace: true });
+        navigate(from, { replace: true });
         toast.success("Login Successful");
       })
       .catch((error) => console.log(error));
@@ -33,7 +33,7 @@ const SocialLogin = ({ title }) => {
   const facebookSignInHandler = () => {
     signInWithFacebook()
       .then(() => {
-        navigate("from", { replace: true });
+        navigate(from, { replace: true });
         toast.success("Login Successful");
       })
       .catch((error) => console.log(error));

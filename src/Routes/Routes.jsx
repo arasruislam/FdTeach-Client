@@ -49,11 +49,11 @@ const router = createBrowserRouter([
     errorElement: <Error />,
     children: [
       {
-        path: "selectedClasses",
+        path: "selected-classes",
         element: <SelectedClasses />,
       },
       {
-        path: "enrolledClasses",
+        path: "enrolled-classes",
         element: <EnrolledClasses />,
       },
     ],

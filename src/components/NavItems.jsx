@@ -34,7 +34,7 @@ const NavItems = () => {
       {user && (
         <li>
           <NavLink
-            to="/dashboard"
+            to="/dashboard/selected-classes"
             className={({ isActive }) => (isActive ? "active" : "default")}
           >
             Dashboard{" "}

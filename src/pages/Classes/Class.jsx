@@ -23,7 +23,7 @@ const Class = ({ singleClass }) => {
         student_name: user?.displayName,
       };
       // post selected classes
-      fetch("http://localhost:5000/selectedClasses", {
+      fetch("http://localhost:5000/selected-classes", {
         method: "POST",
         headers: {
           "content-type": "application/json",

@@ -34,7 +34,7 @@ const Dashboard = () => {
                 {/* Student dashboard items */}
                 <li>
                   <NavLink
-                    to="/dashboard/selectedClasses"
+                    to="/dashboard/selected-classes"
                     className={({ isActive }) =>
                       isActive ? "dashboard-active" : "dashboard-default"
                     }
@@ -45,7 +45,7 @@ const Dashboard = () => {
                 </li>
                 <li>
                   <NavLink
-                    to="/dashboard/enrolledClasses"
+                    to="/dashboard/enrolled-classes"
                     className={({ isActive }) =>
                       isActive ? "dashboard-active" : "dashboard-default"
                     }
