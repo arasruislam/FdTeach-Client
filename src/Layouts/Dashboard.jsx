@@ -44,7 +44,7 @@ const Dashboard = () => {
                     <BiSelectMultiple />
                     My Selected Classes
                   </NavLink>
-                  <span className="absolute right-4 top-2 py-1 rounded-full bg-orange-400 text-white font-bold">{selectedClass?.length || 0}</span>
+                  <span className="absolute right-2 top-2 py-1 rounded-full bg-orange-400 text-white font-bold">{selectedClass?.length || 0}</span>
                 </li>
                 <li>
                   <NavLink

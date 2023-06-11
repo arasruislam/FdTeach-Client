@@ -1,66 +1,79 @@
 import { Helmet } from "react-helmet-async";
 import useSelectedClasses from "../../../../hooks/useSelectedClasses";
+import ClassList from "./ClassList";
+import Swal from "sweetalert2";
 
 const SelectedClasses = () => {
-  const [selectedClass] = useSelectedClasses();
-  
+  const [selectedClass, refetch] = useSelectedClasses();
+
+  const handleDeleteClass = (_id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/selected-classes/${_id}`, {
+          method: "DELETE",
+          headers: {
+            "content-type": "application/json",
+          },
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              Swal.fire("Deleted!", "Class Remove From The List.", "success");
+              refetch();
+            }
+          });
+      }
+    });
+  };
+
   return (
     <>
       {/* Head Title */}
       <Helmet>
         <title>Dashboard -- My Selected Classes</title>
       </Helmet>
-      <section className="w-full px-4">
-        <div className="overflow-x-auto">
-          <table className="table">
-            {/* head */}
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Name</th>
-                <th>Job</th>
-                <th>Favorite Color</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              {/* class details */}
-              {selectedClass && selectedClass.map((classList, index) => (
-                <tr key={classList?._id}>
-                  <th>{index + 1}</th>
-                  <td>
-                    <div className="flex items-center space-x-3">
-                      <div className="avatar">
-                        <div className="mask mask-squircle w-12 h-12">
-                          <img
-                            src="/tailwind-css-component-profile-2@56w.png"
-                            alt="Avatar Tailwind CSS Component"
-                          />
-                        </div>
-                      </div>
-                      <div>
-                        <div className="font-bold">Hart Hagerty</div>
-                        <div className="text-sm opacity-50">United States</div>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    Zemlak, Daniel and Leannon
-                    <br />
-                    <span className="badge badge-ghost badge-sm">
-                      Desktop Support Technician
-                    </span>
-                  </td>
-                  <td>Purple</td>
-                  <th>
-                    <button className="btn btn-ghost btn-xs">details</button>
-                  </th>
+
+      {/* Condition for class list showing */}
+
+      {selectedClass.length > 0 && (
+        <section className="w-full px-4">
+          <div className="overflow-x-auto">
+            <table className="table">
+              {/* head */}
+              <thead>
+                <tr className="text-center">
+                  <th>#</th>
+                  <th>Photo</th>
+                  <th>Class Name</th>
+                  <th>Student</th>
+                  <th>Price</th>
+                  <th>Action</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </section>
+              </thead>
+              <tbody>
+                {/* class details */}
+                {selectedClass &&
+                  selectedClass.map((classList, index) => (
+                    <ClassList
+                      key={classList?._id}
+                      classList={classList}
+                      index={index}
+                      handleDeleteClass={handleDeleteClass}
+                    />
+                  ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      )}
     </>
   );
 };
