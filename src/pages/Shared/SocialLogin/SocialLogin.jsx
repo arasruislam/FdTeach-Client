@@ -21,7 +21,8 @@ const SocialLogin = ({ title }) => {
   // github sing in handler
   const githubSignInHandler = () => {
     signInWithGithub()
-      .then(() => {
+      .then((result) => {
+        console.log(result.user);
         navigate(from, { replace: true });
         toast.success("Login Successful");
       })

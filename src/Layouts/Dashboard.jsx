@@ -26,7 +26,7 @@ const Dashboard = () => {
               <label
                 htmlFor="my-drawer-2"
                 className="btn btn-primary drawer-button lg:hidden"
-              ></label>
+              >Sidebar</label>
             </div>
             <div className="drawer-side">
               <label htmlFor="my-drawer-2" className="drawer-overlay"></label>

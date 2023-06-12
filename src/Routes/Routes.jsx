@@ -10,6 +10,7 @@ import Dashboard from "../Layouts/Dashboard";
 import PrivateRoute from "./PrivateRoute";
 import SelectedClasses from "../pages/Dashboard/Student/SelectedClasses/SelectedClasses";
 import EnrolledClasses from "../pages/Dashboard/Student/EnrolledClasses/EnrolledClasses";
+import Payment from "../pages/Dashboard/Student/Payment/Payment";
 
 const router = createBrowserRouter([
   {
@@ -48,6 +49,7 @@ const router = createBrowserRouter([
     ),
     errorElement: <Error />,
     children: [
+      // Student Routes
       {
         path: "selected-classes",
         element: <SelectedClasses />,
@@ -55,6 +57,10 @@ const router = createBrowserRouter([
       {
         path: "enrolled-classes",
         element: <EnrolledClasses />,
+      },
+      {
+        path: "payment",
+        element: <Payment />,
       },
     ],
   },

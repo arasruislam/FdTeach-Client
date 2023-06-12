@@ -1,9 +1,10 @@
 import { FaDollarSign, FaTrash } from "react-icons/fa";
 import LazyLoad from "react-lazyload";
+import { Link } from "react-router-dom";
 
 const ClassList = ({ classList, index, handleDeleteClass }) => {
   return (
-    <tr key={classList?._id} className="text-center">
+    <tr key={classList?._id} className="hover">
       <td>{index + 1}</td>
       {/* Class image */}
       <td>
@@ -11,10 +12,7 @@ const ClassList = ({ classList, index, handleDeleteClass }) => {
           <div className="avatar">
             <div className="mask mask-squircle w-16" style={{ aspectRatio: 0 }}>
               <LazyLoad>
-                <img
-                  src={classList.image}
-                  alt="class image"
-                />
+                <img src={classList.image} alt="class image" />
               </LazyLoad>
             </div>
           </div>
@@ -30,12 +28,14 @@ const ClassList = ({ classList, index, handleDeleteClass }) => {
       <td className="flex gap-2">
         <button
           onClick={() => handleDeleteClass(classList._id)}
-          className="btn btn-error btn-xs capitalize"
+          className="btn btn-error btn-xs capitalize transition duration-300 hover:scale-105"
         >
-          <FaTrash />Delete
+          <FaTrash />
+          Delete
         </button>
-        <button className="btn btn-warning btn-xs capitalize">
-          <FaDollarSign />Pay
+        <button className="btn btn-warning btn-xs capitalize transition duration-300 hover:scale-105">
+          <FaDollarSign />
+          <Link to="/dashboard/payment">Pay</Link>
         </button>
       </td>
     </tr>
@@ -43,4 +43,3 @@ const ClassList = ({ classList, index, handleDeleteClass }) => {
 };
 
 export default ClassList;
-

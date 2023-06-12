@@ -47,9 +47,9 @@ const SelectedClasses = () => {
 
       {/* Condition for class list showing */}
       {selectedClass && selectedClass.length > 0 ? (
-        <section className="w-full px-4">
+        <section className="max-w-[300px] mx-auto sm:max-w-md md:max-w-full lg:max-w-screen-lg lg:mx-4">
           <div className="overflow-x-auto">
-            <table className="table">
+            <table className="table w-full">
               {/* head */}
               <thead>
                 <tr className="text-center">
