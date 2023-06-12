@@ -2,6 +2,10 @@ import { Helmet } from "react-helmet-async";
 import useSelectedClasses from "../../../../hooks/useSelectedClasses";
 import ClassList from "./ClassList";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
+import Lottie from "lottie-react";
+import noClassFound from "../../../../../public/no-class-found.json";
+import { FaArrowAltCircleRight } from "react-icons/fa";
 
 const SelectedClasses = () => {
   const [selectedClass, refetch] = useSelectedClasses();
@@ -42,8 +46,7 @@ const SelectedClasses = () => {
       </Helmet>
 
       {/* Condition for class list showing */}
-
-      {selectedClass.length > 0 && (
+      {selectedClass && selectedClass.length > 0 ? (
         <section className="w-full px-4">
           <div className="overflow-x-auto">
             <table className="table">
@@ -73,6 +76,25 @@ const SelectedClasses = () => {
             </table>
           </div>
         </section>
+      ) : (
+        <>
+          <div className="flex flex-col items-center justify-center">
+            <Lottie
+              animationData={noClassFound}
+              loop={true}
+            />
+            <h3 className="text-2xl font-bold mb-8">No Class Found!</h3>
+            <p className="flex gap-2">
+              <span>Add classes</span>
+              <Link
+                to="/classes"
+                className="underline text-red-600 font-bold flex items-center gap-1"
+              >
+                Here <FaArrowAltCircleRight />
+              </Link>
+            </p>
+          </div>
+        </>
       )}
     </>
   );

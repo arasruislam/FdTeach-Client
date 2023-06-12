@@ -1,3 +1,4 @@
+import { FaDollarSign, FaTrash } from "react-icons/fa";
 import LazyLoad from "react-lazyload";
 
 const ClassList = ({ classList, index, handleDeleteClass }) => {
@@ -12,7 +13,7 @@ const ClassList = ({ classList, index, handleDeleteClass }) => {
               <LazyLoad>
                 <img
                   src={classList.image}
-                  alt="Avatar Tailwind CSS Component"
+                  alt="class image"
                 />
               </LazyLoad>
             </div>
@@ -31,12 +32,15 @@ const ClassList = ({ classList, index, handleDeleteClass }) => {
           onClick={() => handleDeleteClass(classList._id)}
           className="btn btn-error btn-xs capitalize"
         >
-          Delete
+          <FaTrash />Delete
         </button>
-        <button className="btn btn-warning btn-xs capitalize">Pay</button>
+        <button className="btn btn-warning btn-xs capitalize">
+          <FaDollarSign />Pay
+        </button>
       </td>
     </tr>
   );
 };
 
 export default ClassList;
+
