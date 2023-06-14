@@ -1,10 +1,20 @@
-import useClasses from "../../hooks/useClasses";
 import Class from "./Class";
-import classesBg from "../../assets/classesBG.svg"
+import classesBg from "../../assets/classesBG.svg";
 import { Helmet } from "react-helmet-async";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
 
 const Classes = () => {
-    const [classes] = useClasses();
+  const [axiosSecure] = useAxiosSecure();
+
+  // Instructor data load using tanStack query
+  const { data: classes = [] } = useQuery({
+    queryKey: ["classes"],
+    queryFn: async () => {
+      const res = await axiosSecure.get("/classes");
+      return res.data;
+    },
+  });
   return (
     <>
       {/* Head Title */}

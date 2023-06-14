@@ -3,6 +3,7 @@ import LazyLoad from "react-lazyload";
 import { Link } from "react-router-dom";
 
 const ClassList = ({ classList, index, handleDeleteClass }) => {
+  console.log(classList);
   return (
     <tr key={classList?._id} className="hover">
       <td>{index + 1}</td>
@@ -35,7 +36,7 @@ const ClassList = ({ classList, index, handleDeleteClass }) => {
         </button>
         <button className="btn btn-warning btn-xs capitalize transition duration-300 hover:scale-105">
           <FaDollarSign />
-          <Link to="/dashboard/payment">Pay</Link>
+          <Link to={`/dashboard/payment/${classList._id}`}>Pay</Link>
         </button>
       </td>
     </tr>

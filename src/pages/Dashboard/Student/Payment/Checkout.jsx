@@ -1,12 +1,17 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import "./Checkout.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
-const Checkout = () => {
+const Checkout = ({ LoadedSelectedClass }) => {
   const stripe = useStripe();
   const elements = useElements();
   const [cardError, setCardError] = useState("");
+  const [clientSecret, setClientSecret] = useState("");
+
+  useEffect(() => {
+    fetch("http://localhost:5000/create-payment-intent");
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

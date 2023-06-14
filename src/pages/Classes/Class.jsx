@@ -21,6 +21,7 @@ const Class = ({ singleClass }) => {
         price,
         student_email: user?.email,
         student_name: user?.displayName,
+        role: "student",
       };
       // post selected classes
       fetch("http://localhost:5000/selected-classes", {

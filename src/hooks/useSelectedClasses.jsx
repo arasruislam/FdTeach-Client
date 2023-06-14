@@ -12,12 +12,17 @@ const useSelectedClasses = () => {
     queryKey: ["get-all-selected-classes", user?.email],
     queryFn: async () => {
       const res = await fetch(
-        `http://localhost:5000/get-all-selected-classes?email=${user?.email}`
+        `http://localhost:5000/get-all-selected-classes?email=${user?.email}`,
+        {
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("access-token")}`,
+          },
+        }
       );
       return res.json();
     },
   });
-    
+
   return [selectedClass, refetch, isLoading];
 };
 

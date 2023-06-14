@@ -1,10 +1,20 @@
 import { Helmet } from "react-helmet-async";
-import useInstructors from "../../hooks/useInstructors";
 import Instructor from "./Instructor";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const Instructors = () => {
-  const [instructors] = useInstructors();
-  
+  const [axiosSecure] = useAxiosSecure();
+
+  // Instructor data load using tanStack query
+  const { data: instructors = [] } = useQuery({
+    queryKey: ["instructors"],
+    queryFn: async () => {
+      const res = await axiosSecure.get("/instructors");
+      return res.data;
+    },
+  });
+
   return (
     <div>
       {/* Head Title */}

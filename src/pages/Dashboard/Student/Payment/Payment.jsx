@@ -2,10 +2,13 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import Checkout from "./Checkout";
 import { Helmet } from "react-helmet-async";
+import { useLoaderData } from "react-router-dom";
 
 const stripePromise = loadStripe(import.meta.env.VITE_stripe_pk);
 
 const Payment = () => {
+  const LoadedSelectedClass = useLoaderData();
+  // console.log(LoadedSelectedClass);
   return (
     <>
       {/* Head Title */}
@@ -17,7 +20,7 @@ const Payment = () => {
 
       <div className="w-full lg:px-20 mt-4">
         <Elements stripe={stripePromise}>
-          <Checkout />
+          <Checkout LoadedSelectedClass={LoadedSelectedClass} />
         </Elements>
       </div>
     </>
