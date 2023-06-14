@@ -8,7 +8,7 @@ import { Helmet } from "react-helmet-async";
 import useSelectedClasses from "../hooks/useSelectedClasses";
 
 const Dashboard = () => {
-  const [selectedClass] = useSelectedClasses();
+  const { selectedClass } = useSelectedClasses();
   return (
     <>
       <Header />

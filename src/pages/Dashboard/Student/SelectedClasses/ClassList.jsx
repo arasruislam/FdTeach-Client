@@ -3,7 +3,6 @@ import LazyLoad from "react-lazyload";
 import { Link } from "react-router-dom";
 
 const ClassList = ({ classList, index, handleDeleteClass }) => {
-  console.log(classList);
   return (
     <tr key={classList?._id} className="hover">
       <td>{index + 1}</td>

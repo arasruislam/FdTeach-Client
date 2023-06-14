@@ -10,7 +10,6 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 
 const SelectedClasses = () => {
-  // const [selectedClass, refetch] = useSelectedClasses();
   const { user, loading } = useAuth();
   const [axiosSecure] = useAxiosSecure();
 
@@ -21,7 +20,6 @@ const SelectedClasses = () => {
       const res = await axiosSecure.get(
         `/get-all-selected-classes?email=${user?.email}`
       );
-      console.log(res.data);
       return res.data;
     },
   });
@@ -37,19 +35,13 @@ const SelectedClasses = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/selected-classes/${_id}`, {
-          method: "DELETE",
-          headers: {
-            "content-type": "application/json",
-          },
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            if (data.deletedCount > 0) {
-              Swal.fire("Deleted!", "Class Remove From The List.", "success");
-              refetch();
-            }
-          });
+        axiosSecure
+          .delete(`/selected-classes/${_id}`)
+          .then((res) => {
+            res.data;
+            refetch();
+          })
+          .catch((error) => console.log(error));
       }
     });
   };

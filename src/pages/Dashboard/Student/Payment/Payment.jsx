@@ -7,8 +7,7 @@ import { useLoaderData } from "react-router-dom";
 const stripePromise = loadStripe(import.meta.env.VITE_stripe_pk);
 
 const Payment = () => {
-  const LoadedSelectedClass = useLoaderData();
-  // console.log(LoadedSelectedClass);
+  const loadedSelectedClass = useLoaderData();
   return (
     <>
       {/* Head Title */}
@@ -20,7 +19,7 @@ const Payment = () => {
 
       <div className="w-full lg:px-20 mt-4">
         <Elements stripe={stripePromise}>
-          <Checkout LoadedSelectedClass={LoadedSelectedClass} />
+          <Checkout loadedSelectedClass={loadedSelectedClass} />
         </Elements>
       </div>
     </>
